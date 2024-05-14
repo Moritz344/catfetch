@@ -41,6 +41,10 @@ python3 catfetch.py
 - termcolor
 - platform
 - psutil
+- os
+- pwd
+- cpuinfo
+- psutil
 
 # Updates
 I will update this repository.
