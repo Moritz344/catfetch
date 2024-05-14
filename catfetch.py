@@ -2,6 +2,8 @@ from termcolor import cprint
 import platform
 import psutil
 import cpuinfo
+import pwd
+import os
 # nfetch 
 # ascii art
 # catpfetch
@@ -19,6 +21,12 @@ def ascii():
     # cpu
     cpu_info = cpuinfo.get_cpu_info()
 
+    # Shell
+    shell_user = os.getlogin()
+    shell_info = pwd.getpwnam(shell_user)
+    user_shell = shell_info.pw_shell
+
+    
     # Prozessornamen
     processor_name = cpu_info['brand_raw']
     return {
@@ -26,7 +34,9 @@ def ascii():
         "Processor": processor,
         "Total Memory": total_memory,
         "Available Memory": available_memory,
-        "CPU": processor_name
+        "CPU": processor_name,
+        "User": shell_user,
+        "Shell": user_shell
     }
 cat = """
       
